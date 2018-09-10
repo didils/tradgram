@@ -1,0 +1,3 @@
+# tradgram
+
+trademark application
