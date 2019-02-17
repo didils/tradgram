@@ -63,14 +63,25 @@ DJANGO_APPS = [
     'django.contrib.admin',
 ]
 THIRD_PARTY_APPS = [
-    'crispy_forms',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.kakao',
     'rest_framework',
+    'rest_framework.authtoken',
+    'rest_auth',
+    'rest_auth.registration',
+    'imagekit'
 ]
 LOCAL_APPS = [
     'tradgram.users.apps.UsersAppConfig',
+    'tradgram.chats.apps.ChatsConfig',
+    'tradgram.chatrooms.apps.ChatroomsConfig',
+    'tradgram.cases.apps.CasesConfig',
+    'tradgram.caseFiles.apps.CasefilesConfig',
+    'tradgram.relations.apps.RelationsConfig',
+    'tradgram.products.apps.ProductsConfig',
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -93,9 +104,9 @@ AUTHENTICATION_BACKENDS = [
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-user-model
 AUTH_USER_MODEL = 'users.User'
 # https://docs.djangoproject.com/en/dev/ref/settings/#login-redirect-url
-LOGIN_REDIRECT_URL = 'users:redirect'
+#LOGIN_REDIRECT_URL = 'users:redirect'
 # https://docs.djangoproject.com/en/dev/ref/settings/#login-url
-LOGIN_URL = 'account_login'
+#LOGIN_URL = 'account_login'
 
 # PASSWORDS
 # ------------------------------------------------------------------------------
@@ -227,9 +238,9 @@ ACCOUNT_ALLOW_REGISTRATION = env.bool('DJANGO_ACCOUNT_ALLOW_REGISTRATION', True)
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 ACCOUNT_AUTHENTICATION_METHOD = 'username'
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
-ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_REQUIRED = False
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 ACCOUNT_ADAPTER = 'tradgram.users.adapters.AccountAdapter'
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
@@ -238,3 +249,14 @@ SOCIALACCOUNT_ADAPTER = 'tradgram.users.adapters.SocialAccountAdapter'
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+    ),
+}
+
+REST_USE_JWT = True

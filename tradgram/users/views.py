@@ -1,52 +1,63 @@
-from django.contrib.auth import get_user_model
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse
-from django.views.generic import DetailView, ListView, RedirectView, UpdateView
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from . import models
+from allauth.socialaccount.providers.facebook.views import FacebookOAuth2Adapter
+from rest_auth.registration.views import SocialLoginView
 
-User = get_user_model()
+class UserProfile(APIView):
 
+    def get(self, request, format=None):
 
-class UserDetailView(LoginRequiredMixin, DetailView):
+        user = request.user
+        
+        serializer = serializers.CaseUserSerializer(
+            user, context={'request': request})
 
-    model = User
-    slug_field = "username"
-    slug_url_kwarg = "username"
-
-
-user_detail_view = UserDetailView.as_view()
-
-
-class UserListView(LoginRequiredMixin, ListView):
-
-    model = User
-    slug_field = "username"
-    slug_url_kwarg = "username"
+        return Response(data=serializer.data, status=status.HTTP_200_OK)
 
 
-user_list_view = UserListView.as_view()
+class ChangePassword(APIView):
 
+    def put(self, request, username, format=None):
 
-class UserUpdateView(LoginRequiredMixin, UpdateView):
+        user = request.user
 
-    model = User
-    fields = ["name"]
+        if user.username == username:
 
-    def get_success_url(self):
-        return reverse("users:detail", kwargs={"username": self.request.user.username})
+            current_password = request.data.get('current_password', None)
 
-    def get_object(self):
-        return User.objects.get(username=self.request.user.username)
+            if current_password is not None:
 
+                passwords_match = user.check_password(current_password)
 
-user_update_view = UserUpdateView.as_view()
+                if passwords_match:
 
+                    new_password = request.data.get('new_password', None)
 
-class UserRedirectView(LoginRequiredMixin, RedirectView):
+                    if new_password is not None:
 
-    permanent = False
+                        user.set_password(new_password)
 
-    def get_redirect_url(self):
-        return reverse("users:detail", kwargs={"username": self.request.user.username})
+                        user.save()
 
+                        return Response(status=status.HTTP_200_OK)
 
-user_redirect_view = UserRedirectView.as_view()
+                    else:
+
+                        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+                else:
+
+                    return Response(status=status.HTTP_400_BAD_REQUEST)
+
+            else:
+
+                return Response(status=status.HTTP_400_BAD_REQUEST)
+
+        else:
+
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+class FacebookLogin(SocialLoginView):
+    adapter_class = FacebookOAuth2Adapter
