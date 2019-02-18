@@ -68,6 +68,7 @@ THIRD_PARTY_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.kakao',
+    'allauth.socialaccount.providers.naver',
     'rest_framework',
     'rest_framework.authtoken',
     'rest_auth',
@@ -76,6 +77,8 @@ THIRD_PARTY_APPS = [
 ]
 LOCAL_APPS = [
     'tradgram.users.apps.UsersAppConfig',
+    'tradgram.kakao.apps.KakaoConfig',
+    'tradgram.naver.apps.NaverConfig',
     'tradgram.chats.apps.ChatsConfig',
     'tradgram.chatrooms.apps.ChatroomsConfig',
     'tradgram.cases.apps.CasesConfig',
