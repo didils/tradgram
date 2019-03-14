@@ -15,6 +15,11 @@ urlpatterns = [
         name='user_profile'
     ),
     url(
+        regex=r'^check/$',
+        view=views.DuplicateCheck.as_view(),
+        name='check')
+        ,
+    url(
         regex=r'^login/facebook/$',
         view=views.FacebookLogin.as_view(),
         name='fb_login')

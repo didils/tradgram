@@ -4,6 +4,7 @@ from rest_framework import status
 from . import models
 from allauth.socialaccount.providers.facebook.views import FacebookOAuth2Adapter
 from rest_auth.registration.views import SocialLoginView
+from . import models, serializers
 
 class UserProfile(APIView):
 
@@ -11,11 +12,25 @@ class UserProfile(APIView):
 
         user = request.user
         
-        serializer = serializers.CaseUserSerializer(
+        serializer = serializers.ListUserSerializer(
             user, context={'request': request})
 
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 
+
+class DuplicateCheck(APIView):
+
+    def get(self, request, format=None):
+
+        usernameforcheck = request.query_params.get('usernameforcheck', None)
+
+        founduser = models.User.objects.filter(
+                username=usernameforcheck)
+
+        serializer = serializers.ListUserSerializer(
+            founduser, many=True, context={'request': request})
+
+        return Response(data=serializer.data, status=status.HTTP_200_OK)
 
 class ChangePassword(APIView):
 
