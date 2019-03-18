@@ -16,11 +16,15 @@ class AccountAdapter(DefaultAccountAdapter):
             name = request.data.get('name', None)
             email = request.data.get('email', None)
             username = request.data.get('username', None)
+            social_id = request.data.get('social_id', None)
+            phone = request.data.get('phone', None)
             password1 = request.data.get('password1', None)
             password2 = request.data.get('password2', None)
             user.name = name
             user.email = email
             user.username = username
+            user.phone = phone
+            user.social_id = social_id
             if(password1 == password2):
                 user.set_password(password1)
             user.save()

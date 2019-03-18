@@ -73,7 +73,8 @@ THIRD_PARTY_APPS = [
     'rest_framework.authtoken',
     'rest_auth',
     'rest_auth.registration',
-    'imagekit'
+    'imagekit',
+    "push_notifications"
 ]
 LOCAL_APPS = [
     'tradgram.users.apps.UsersAppConfig',
@@ -89,6 +90,10 @@ LOCAL_APPS = [
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+
+PUSH_NOTIFICATIONS_SETTINGS = {
+        "FCM_API_KEY": "AIzaSyAV-KWhjy8Hky8jTYcnyAijczVLwf6EW3s"
+}
 
 # MIGRATIONS
 # ------------------------------------------------------------------------------

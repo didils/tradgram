@@ -34,6 +34,7 @@ django_coverage_plugin = "==1.6.0"
 djangorestframework-jwt = "*"
 django-rest-auth = "*"
 django-imagekit = "*"
+django-push-notifications = "*"
 
 [dev-packages]
 

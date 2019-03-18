@@ -17,7 +17,17 @@ urlpatterns = [
     url(
         regex=r'^check/$',
         view=views.DuplicateCheck.as_view(),
-        name='check')
+        name='username_check')
+        ,
+    url(
+        regex=r'^checkemail/$',
+        view=views.DuplicateEmailCheck.as_view(),
+        name='email_check')
+        ,
+    url(
+        regex=r'^checkid/$',
+        view=views.DuplicateIdCheck.as_view(),
+        name='id_check')
         ,
     url(
         regex=r'^login/facebook/$',

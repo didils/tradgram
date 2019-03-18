@@ -32,6 +32,34 @@ class DuplicateCheck(APIView):
 
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 
+class DuplicateEmailCheck(APIView):
+
+    def get(self, request, format=None):
+
+        emailforcheck = request.query_params.get('emailforcheck', None)
+
+        foundemail = models.User.objects.filter(
+                email=emailforcheck)
+
+        serializer = serializers.ListUserSerializer(
+            foundemail, many=True, context={'request': request})
+
+        return Response(data=serializer.data, status=status.HTTP_200_OK)
+
+class DuplicateIdCheck(APIView):
+
+    def get(self, request, format=None):
+
+        idforcheck = request.query_params.get('idforcheck', None)
+
+        foundid = models.User.objects.filter(
+                social_id=idforcheck)
+
+        serializer = serializers.ListUserSerializer(
+            foundid, many=True, context={'request': request})
+
+        return Response(data=serializer.data, status=status.HTTP_200_OK)
+
 class ChangePassword(APIView):
 
     def put(self, request, username, format=None):

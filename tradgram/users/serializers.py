@@ -33,6 +33,7 @@ class ListUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.User
         fields = (
+            'username',
             'name',
             'email'
         )
@@ -48,7 +49,9 @@ class SignUpSerializer(RegisterSerializer):
             'username': self.validated_data.get('username', ''),
             'password1': self.validated_data.get('password1', ''),
             'password2': self.validated_data.get('password2', ''),
-            'email': self.validated_data.get('email', '')
+            'email': self.validated_data.get('email', ''),
+            'social_id': self.validated_data.get('social_id', ''),
+            'phone': self.validated_data.get('phone', '')
         }
     
     def save(self, request):

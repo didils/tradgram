@@ -42,9 +42,9 @@ class Case(models.Model):
     registration_number = models.CharField(max_length=80, blank=True, null=True)
     registration_date = models.CharField(max_length=80, blank=True, null=True)
     products = models.TextField(blank=True, null=True)
-    designatedArray = JSONField(blank=True, null=True)
-    applicantArray = JSONField(blank=True, null=True)
-    paymentArray = JSONField(blank=True, null=True)
+    designatedArray = models.TextField(blank=True, null=True)
+    applicantArray = models.TextField(blank=True, null=True)
+    paymentArray = models.TextField(blank=True, null=True)
     descriptions = models.TextField(blank=True, null=True)
     progress_status = models.CharField(max_length=80, choices=STATUS_CHOICES, blank=True, null=True)
 
