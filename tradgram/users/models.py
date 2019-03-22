@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db.models import CharField
+from django.db import models
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
@@ -28,6 +29,7 @@ class User(AbstractUser):
     signature_image = CharField(max_length=80, blank=True, null=True)
     social_id = CharField(max_length=80, blank=True, null=True)
     note = CharField(max_length=2000, blank=True, null=True)
+    fcm_pushtoken = models.TextField(blank=True, null=True)
     is_leave = CharField(max_length=80, choices=LEAVE_CHOICES, blank=True, null=True)
 
     @property

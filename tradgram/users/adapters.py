@@ -18,6 +18,7 @@ class AccountAdapter(DefaultAccountAdapter):
             username = request.data.get('username', None)
             social_id = request.data.get('social_id', None)
             phone = request.data.get('phone', None)
+            fcm_pushtoken = request.data.get('fcm_pushtoken', None)
             password1 = request.data.get('password1', None)
             password2 = request.data.get('password2', None)
             user.name = name
@@ -25,6 +26,7 @@ class AccountAdapter(DefaultAccountAdapter):
             user.username = username
             user.phone = phone
             user.social_id = social_id
+            user.fcm_pushtoken = fcm_pushtoken
             if(password1 == password2):
                 user.set_password(password1)
             user.save()

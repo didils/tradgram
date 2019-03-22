@@ -51,7 +51,8 @@ class SignUpSerializer(RegisterSerializer):
             'password2': self.validated_data.get('password2', ''),
             'email': self.validated_data.get('email', ''),
             'social_id': self.validated_data.get('social_id', ''),
-            'phone': self.validated_data.get('phone', '')
+            'phone': self.validated_data.get('phone', ''),
+            'fcm_pushtoken': self.validated_data.get('fcm_pushtoken', '')
         }
     
     def save(self, request):

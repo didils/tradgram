@@ -79,6 +79,7 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     'tradgram.users.apps.UsersAppConfig',
     'tradgram.kakao.apps.KakaoConfig',
+    'tradgram.applicants.apps.ApplicantsConfig',
     'tradgram.naver.apps.NaverConfig',
     'tradgram.chats.apps.ChatsConfig',
     'tradgram.chatrooms.apps.ChatroomsConfig',

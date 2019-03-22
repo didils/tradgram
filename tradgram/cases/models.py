@@ -38,15 +38,21 @@ class Case(models.Model):
     application_number = models.CharField(max_length=80, null=True, blank=True)
     identification_number = models.CharField(max_length=80, null=True, blank=True)
     publication_number = models.CharField(max_length=80, blank=True, null=True)
-    publication_date = models.CharField(max_length=80, blank=True, null=True)
+    publication_date = models.DateField(null=True, blank=True)
     registration_number = models.CharField(max_length=80, blank=True, null=True)
-    registration_date = models.CharField(max_length=80, blank=True, null=True)
+    registration_date = models.DateField(null=True, blank=True)
     products = models.TextField(blank=True, null=True)
     designatedArray = models.TextField(blank=True, null=True)
     applicantArray = models.TextField(blank=True, null=True)
     paymentArray = models.TextField(blank=True, null=True)
     descriptions = models.TextField(blank=True, null=True)
     progress_status = models.CharField(max_length=80, choices=STATUS_CHOICES, blank=True, null=True)
+
+    expected_date = models.DateField(null=True, blank=True)
+    examiner_name = models.CharField(max_length=80, blank=True, null=True)
+    examiner_phone = models.CharField(max_length=80, blank=True, null=True)
+    examiner_team = models.CharField(max_length=80, blank=True, null=True)
+    waiting_order = models.CharField(max_length=80, blank=True, null=True)
 
     
     def __str__(self):

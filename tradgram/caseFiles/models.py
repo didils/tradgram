@@ -18,33 +18,34 @@ class CaseFile(models.Model):
     case = models.ForeignKey(case_models.Case, null=True, on_delete=models.PROTECT)
     owner = models.ForeignKey(user_models.User, null=True, on_delete=models.PROTECT)
     date_of_file = models.DateField(auto_now_add=True)
-    file_page1 = ProcessedImageField(processors=[
-                                   Transpose()
-                               ],
-                               format='JPEG',
-                               options={'quality': 50})
-    file_page2 = ProcessedImageField(processors=[
-                                   Transpose()
-                               ],
-                               format='JPEG',
-                               options={'quality': 50},
-                               blank=True, null=True)
-    file_page3 = ProcessedImageField(processors=[
-                                   Transpose()
-                               ],
-                               format='JPEG',
-                               options={'quality': 50},
-                               blank=True, null=True)
-    file_page4 = ProcessedImageField(processors=[
-                                   Transpose()
-                               ],
-                               format='JPEG',
-                               options={'quality': 50},
-                               blank=True, null=True)
-    file_page5 = ProcessedImageField(processors=[
-                                   Transpose()
-                               ],
-                               format='JPEG',
-                               options={'quality': 50},
-                               blank=True, null=True)
+    file_pdf = models.FileField(null=True)
+    # file_page1 = ProcessedImageField(processors=[
+    #                                Transpose()
+    #                            ],
+    #                            format='JPEG',
+    #                            options={'quality': 50})
+    # file_page2 = ProcessedImageField(processors=[
+    #                                Transpose()
+    #                            ],
+    #                            format='JPEG',
+    #                            options={'quality': 50},
+    #                            blank=True, null=True)
+    # file_page3 = ProcessedImageField(processors=[
+    #                                Transpose()
+    #                            ],
+    #                            format='JPEG',
+    #                            options={'quality': 50},
+    #                            blank=True, null=True)
+    # file_page4 = ProcessedImageField(processors=[
+    #                                Transpose()
+    #                            ],
+    #                            format='JPEG',
+    #                            options={'quality': 50},
+    #                            blank=True, null=True)
+    # file_page5 = ProcessedImageField(processors=[
+    #                                Transpose()
+    #                            ],
+    #                            format='JPEG',
+    #                            options={'quality': 50},
+    #                            blank=True, null=True)
     file_name = models.CharField(max_length=80, choices=FILE_NAME, blank=True, null=True)

@@ -34,10 +34,11 @@ class CaseFileSerializer(serializers.ModelSerializer):
             'case',
             'owner',
             'date_of_file',
-            'file_page1',
-            'file_page2',
-            'file_page3',
-            'file_page4',
-            'file_page5',
+            # 'file_page1',
+            # 'file_page2',
+            # 'file_page3',
+            # 'file_page4',
+            # 'file_page5',
             'file_name',
+            'file_pdf'
         )
