@@ -31,6 +31,7 @@ class CaseFileSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.CaseFile
         fields = (
+            'id',
             'case',
             'owner',
             'date_of_file',
@@ -40,5 +41,7 @@ class CaseFileSerializer(serializers.ModelSerializer):
             # 'file_page4',
             # 'file_page5',
             'file_name',
-            'file_pdf'
+            'file_pdf',
+            'isReportExist',
+            'expireDate'
         )

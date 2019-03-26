@@ -52,7 +52,8 @@ class Case(models.Model):
     examiner_name = models.CharField(max_length=80, blank=True, null=True)
     examiner_phone = models.CharField(max_length=80, blank=True, null=True)
     examiner_team = models.CharField(max_length=80, blank=True, null=True)
-    waiting_order = models.CharField(max_length=80, blank=True, null=True)
+    waiting_order = models.PositiveSmallIntegerField(blank=True, null=True)
+    waiting_total = models.PositiveSmallIntegerField(blank=True, null=True)
 
     
     def __str__(self):

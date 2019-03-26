@@ -28,8 +28,10 @@ class User(AbstractUser):
     cumulative_usage_count = CharField(max_length=80, blank=True, null=True)
     signature_image = CharField(max_length=80, blank=True, null=True)
     social_id = CharField(max_length=80, blank=True, null=True)
+    coupon_history = CharField(max_length=500, blank=True, null=True, default='')
     note = CharField(max_length=2000, blank=True, null=True)
     fcm_pushtoken = models.TextField(blank=True, null=True)
+    point = models.PositiveSmallIntegerField(blank=True, null=True, default=0)
     is_leave = CharField(max_length=80, choices=LEAVE_CHOICES, blank=True, null=True)
 
     @property

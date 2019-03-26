@@ -23,6 +23,7 @@ class CaseSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Case
         fields = (
+            'id',
             'trademark_title',
             'file',
             'owner',
@@ -46,6 +47,7 @@ class CaseSerializer(serializers.ModelSerializer):
             'examiner_phone',
             'examiner_team',
             'waiting_order',
+            'waiting_total',
         )
 
 class CaseUploadSerializer(serializers.ModelSerializer):

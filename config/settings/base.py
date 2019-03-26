@@ -34,6 +34,12 @@ USE_L10N = True
 # https://docs.djangoproject.com/en/dev/ref/settings/#use-tz
 USE_TZ = True
 
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.daum.net'
+EMAIL_HOST_USER = 'pat@pat-earn.com'
+EMAIL_HOST_PASSWORD = 'voxjsxmrgj12'
+EMAIL_PORT = 465
+
 # DATABASES
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
@@ -79,6 +85,9 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     'tradgram.users.apps.UsersAppConfig',
     'tradgram.kakao.apps.KakaoConfig',
+    'tradgram.coupons.apps.CouponsConfig',
+    'tradgram.OAreports.apps.OareportsConfig',
+    'tradgram.searchreports.apps.SearchreportsConfig',
     'tradgram.applicants.apps.ApplicantsConfig',
     'tradgram.naver.apps.NaverConfig',
     'tradgram.chats.apps.ChatsConfig',
@@ -87,6 +96,8 @@ LOCAL_APPS = [
     'tradgram.caseFiles.apps.CasefilesConfig',
     'tradgram.relations.apps.RelationsConfig',
     'tradgram.products.apps.ProductsConfig',
+    'tradgram.point_histories.apps.PointHistoriesConfig',
+    
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps

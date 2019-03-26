@@ -8,23 +8,17 @@ from . import models
 
 # class UserProfileSerializer(serializers.ModelSerializer):
 
-#     images = images_serializers.CountImageSerializer(many=True, read_only=True)
-#     post_count = serializers.ReadOnlyField()
-#     followers_count = serializers.ReadOnlyField()
-#     following_count = serializers.ReadOnlyField()
-
 #     class Meta:
 #         model = models.User
 #         fields = (
-#             'profile_image',
+            
 #             'username',
 #             'name',
-#             'bio',
-#             'website',
-#             'post_count',
-#             'followers_count',
-#             'following_count',
-#             'images'
+#             'email',
+#             'point',
+#             'phone',
+#             'address',
+#             'point',
 #         )
 
 
@@ -35,7 +29,12 @@ class ListUserSerializer(serializers.ModelSerializer):
         fields = (
             'username',
             'name',
-            'email'
+            'email',
+            'point',
+            'phone',
+            'address',
+            'point',
+            'coupon_history',
         )
 
 

@@ -6,27 +6,28 @@ from rest_framework import status
 
 # Create your views here.
 
-class ApplicantCheck(APIView):
+class Point_HistoryCheck(APIView):
 
     def get(self, request, format=None):
 
         usernameforcheck = request.query_params.get('usernameforcheck', None)
 
-        foundapplicant = models.Applicant.objects.filter(
-                owner__username=usernameforcheck).order_by('add_date')[:10]
+        found_point_history = models.Point_history.objects.filter(
+                owner__username=usernameforcheck)
 
-        serializer = serializers.ApplicantSerializer(
-            foundapplicant, many=True, context={'request': request})
-
+        serializer = serializers.PointSerializer(
+            found_point_history, many=True, context={'request': request})
+        
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 
-class UploadApplicants(APIView):
+
+class UploadPoint_Histories(APIView):
 
     def post(self, request, format=None):
 
         user = request.user
 
-        serializer = serializers.ApplicantUploadSerializer(data=request.data)
+        serializer = serializers.PointUploadSerializer(data=request.data)
 
         if serializer.is_valid():
 

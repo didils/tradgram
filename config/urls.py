@@ -23,6 +23,14 @@ urlpatterns = [
         include("tradgram.cases.urls", namespace="cases"),
     ),
     path(
+        "oareports/",
+        include("tradgram.OAreports.urls", namespace="reports"),
+    ),
+    path(
+        "searchreports/",
+        include("tradgram.searchreports.urls", namespace="searchreports"),
+    ),
+    path(
         "applicants/",
         include("tradgram.applicants.urls", namespace="applicants"),
     ),
@@ -39,12 +47,20 @@ urlpatterns = [
         include("tradgram.chats.urls", namespace="chats"),
     ),
     path(
+        "coupons/",
+        include("tradgram.coupons.urls", namespace="coupons"),
+    ),
+    path(
         "relations/",
         include("tradgram.relations.urls", namespace="relations"),
     ),
     path(
         "products/",
         include("tradgram.products.urls", namespace="products"),
+    ),
+    path(
+        "pointhistories/",
+        include("tradgram.point_histories.urls", namespace="point_histories"),
     ),
     path("accounts/", include("allauth.urls")),
     # Your stuff: custom urls includes go here
