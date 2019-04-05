@@ -17,4 +17,4 @@ def user_signed_up(request, user, **kwargs):
         io = BytesIO(avatar_image.read())
         user.profile_image.save('{}.jpg'.format(uid), File(io))
         user.name = user.get_full_name()
-    user.save()
+        user.save()

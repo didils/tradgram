@@ -89,6 +89,7 @@ LOCAL_APPS = [
     'tradgram.OAreports.apps.OareportsConfig',
     'tradgram.searchreports.apps.SearchreportsConfig',
     'tradgram.applicants.apps.ApplicantsConfig',
+    'tradgram.questions.apps.QuestionsConfig',
     'tradgram.naver.apps.NaverConfig',
     'tradgram.chats.apps.ChatsConfig',
     'tradgram.chatrooms.apps.ChatroomsConfig',

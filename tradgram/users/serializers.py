@@ -6,20 +6,20 @@ from . import models
 # from tradgram.images import serializers as images_serializers
 
 
-# class UserProfileSerializer(serializers.ModelSerializer):
+class UserProfileSerializer(serializers.ModelSerializer):
 
-#     class Meta:
-#         model = models.User
-#         fields = (
+    class Meta:
+        model = models.User
+        fields = (
             
-#             'username',
-#             'name',
-#             'email',
-#             'point',
-#             'phone',
-#             'address',
-#             'point',
-#         )
+            'username',
+            'name',
+            'email',
+            'point',
+            'phone',
+            'address',
+            'point',
+        )
 
 
 class ListUserSerializer(serializers.ModelSerializer):
@@ -35,6 +35,7 @@ class ListUserSerializer(serializers.ModelSerializer):
             'address',
             'point',
             'coupon_history',
+            'cumulative_pay_amount'
         )
 
 

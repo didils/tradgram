@@ -35,6 +35,10 @@ urlpatterns = [
         include("tradgram.applicants.urls", namespace="applicants"),
     ),
     path(
+        "questions/",
+        include("tradgram.questions.urls", namespace="questions"),
+    ),
+    path(
         "casefiles/",
         include("tradgram.caseFiles.urls", namespace="caseFiles"),
     ),

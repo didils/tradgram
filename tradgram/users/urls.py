@@ -35,5 +35,9 @@ urlpatterns = [
     url(
         regex=r'^getprofile/$',
         view=views.UserProfile.as_view(),
-        name='Get_profile')
+        name='Get_profile'),
+    url(
+        regex=r'^updatepoint/$',
+        view=views.UpdateUserPoint.as_view(),
+        name='update_point')
 ]

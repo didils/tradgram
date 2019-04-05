@@ -16,6 +16,30 @@ class UserProfile(APIView):
 
         return Response(data=serializer.data, status=status.HTTP_200_OK)
 
+class UpdateUserPoint(APIView):
+
+    def post(self, request):
+
+        user = request.user
+
+        changed_point = request.data.get('changed_point', None)
+        changed_coupon = request.data.get('changed_coupon', None)
+        changed_cumulative_pay_amount = request.data.get('changed_cumulative_pay_amount', None)
+
+        if changed_point is not None:
+
+            user.point =  changed_point
+            user.coupon_history =  changed_coupon
+            user.cumulative_pay_amount =  changed_cumulative_pay_amount
+
+            user.save()
+
+            return Response(status=status.HTTP_200_OK)
+
+        else:
+
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
 
 class DuplicateCheck(APIView):
 
